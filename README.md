@@ -8,7 +8,7 @@ Example of running bash script periodically using systemd (either system level o
     
 ## for periodic run with user-level systemd service
     cd systemd-userlevel
-    ./simple-bash.sh 2
+    ./create-simple-userservice.sh
     vi ~/default/simple
     
     tail -f ~/log/simple/*
@@ -16,7 +16,7 @@ Example of running bash script periodically using systemd (either system level o
     
 ## for periodic run with system-level systemd service
     cd systemd-systemlevel
-    ./simple-bash.sh 2
+    ./create-simple-service.sh
     vi /etc/default/simple
     
     tail -f /var/log/simple/simple.log

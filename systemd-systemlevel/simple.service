@@ -1,0 +1,28 @@
+[Unit]
+Description=simple systemd bash script
+ConditionPathExists=$scriptdir/simple-bash.sh
+After=network.target
+ 
+[Service]
+#Type=simple
+Type=forking
+User=simpleservice
+Group=simpleservice
+
+# define 'env_var' env var, secured by root ownership and mode 600
+EnvironmentFile=-/etc/default/simple
+
+WorkingDirectory=$scriptdir
+ExecStart=$scriptdir/simple-bash.sh 3
+
+# make sure log directory exists and owned by syslog
+PermissionsStartOnly=true
+ExecStartPre=/bin/mkdir -p /var/log/simple
+ExecStartPre=/bin/chown syslog:adm /var/log/simple
+ExecStartPre=/bin/chmod 755 /var/log/simple
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=simpleservice
+ 
+[Install]
+WantedBy=multi-user.target

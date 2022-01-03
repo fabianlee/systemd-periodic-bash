@@ -41,7 +41,7 @@ chmod -R 755 $userdir/log
 # create custom environment configuration
 if [ ! -f ~/default/$service ]; then
   mkdir -p ~/default
-  echo "env_var=" | tee ~/default/$service
+  echo "env_arg=" | tee ~/default/$service
 fi
 chmod 600 ~/default/$service
 
