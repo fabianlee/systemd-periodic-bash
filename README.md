@@ -8,15 +8,15 @@ Example of running bash script periodically using systemd (either system level o
     
 ## for periodic run with user-level systemd service
     cd systemd-userlevel
-    ./create-simple-userservice.sh
-    vi ~/default/simpleservice
+    ./simple-bash.sh 2
+    vi ~/default/simple
     
-    tail -f ~/log/simpleservice/*
+    tail -f ~/log/simple/*
     
     
 ## for periodic run with system-level systemd service
     cd systemd-systemlevel
-    ./create-simple-service.sh
-    vi /etc/default/simpleservice
+    ./simple-bash.sh 2
+    vi /etc/default/simple
     
-    tail -f /var/log/simpleservice/simple.log
+    tail -f /var/log/simple/simple.log
