@@ -1,0 +1,5 @@
+[Unit]
+Description=Timer for periodically running simple bash script at user level
+
+[Timer]
+OnUnitActiveSec=60

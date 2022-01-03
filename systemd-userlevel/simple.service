@@ -1,0 +1,25 @@
+[Unit]
+Description=Simple service user level
+ConditionPathExists=$scriptdir/simple-bash.sh
+After=network.target
+ 
+[Service]
+Type=forking
+#User=
+#Group=
+
+# define 'env_arg' env var, secured by root ownership and mode 600
+EnvironmentFile=-$userdir/default/simple
+
+WorkingDirectory=$scriptdir
+ExecStart=$scriptdir/simple-bash.sh
+
+# make sure log directory exists and owned by syslog
+PermissionsStartOnly=true
+ExecStartPre=/bin/mkdir -p $userdir/log/simple
+ExecStartPre=/bin/chmod -R 755 $userdir/log
+StandardOutput=append:$userdir/log/simple/simple.log
+StandardError=append:$userdir/log/simple/simple.err
+ 
+[Install]
+WantedBy=default.target
