@@ -12,7 +12,7 @@ Type=forking
 EnvironmentFile=-$userdir/default/simple
 
 WorkingDirectory=$scriptdir
-ExecStart=$scriptdir/simple-bash.sh
+ExecStart=$scriptdir/simple-bash.sh 3
 
 # make sure log directory exists and owned by syslog
 PermissionsStartOnly=true

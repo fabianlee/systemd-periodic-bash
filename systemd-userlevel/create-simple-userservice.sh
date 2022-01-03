@@ -5,6 +5,7 @@
 
 user=$(id -un)
 service=simple
+script=simple-bash.sh
 
 echo $XDG_RUNTIME_DIR
 echo $DBUS_SESSION_BUS_ADDRESS
@@ -17,7 +18,7 @@ echo "user home dir: $userdir"
 
 # path to bash script that will be executed
 scriptdir=$(realpath ..)
-[ -f "$scriptdir/simple-bash.sh" ] || { echo "ERROR did not find script: $scriptdir/simple-bash.sh"; exit 3; }
+[ -f "$scriptdir/$script" ] || { echo "ERROR did not find script: $scriptdir/$script"; exit 3; }
 
 # make directory for use-level systemd service
 mkdir -p ~/.config/systemd/user/
